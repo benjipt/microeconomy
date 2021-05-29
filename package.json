@@ -1,0 +1,28 @@
+{
+  "name": "microeconomy",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.18.3"
+  },
+  "description": "Privacy focused referral networks. Full-stack CRUD app using Express JS, deployed on Heroku.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjipt/microeconomy.git"
+  },
+  "author": "@benjipt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjipt/microeconomy/issues"
+  },
+  "homepage": "https://github.com/benjipt/microeconomy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.12.12"
+  }
+}
