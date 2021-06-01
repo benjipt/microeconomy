@@ -48,14 +48,6 @@ const appController = require('./controllers/communities.js');
 app.use('/', appController);
 
 //___________________
-// Routes
-//___________________
-//localhost:3000
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
-});
-
-//___________________
 //Listener
 //___________________
 app.listen(PORT, () => console.log( 'Listening on port:', PORT));
