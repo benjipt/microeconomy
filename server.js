@@ -49,7 +49,7 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 // INDEX ROUTE
 app.get('/', (req, res) => {
-    res.send('This is the index page');
+    res.render('index.ejs');
 });
 
 //___________________
