@@ -6,6 +6,6 @@ const Community = require('../models/communities.js');
 
 // ROUTES
 // index
-router.get('/', (req, res) => {
-    res.send('This is the index page');
+router.get('/new', (req, res) => {
+    res.send('This is the new page');
 });

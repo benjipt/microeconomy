@@ -4,7 +4,7 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
-const app = express ();
+const app = express();
 const db = mongoose.connection;
 //___________________
 //Port
@@ -44,8 +44,13 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 // Controllers
-const appController = require('./controllers/communities.js');
-app.use('/', appController);
+// const communityController = require('./controllers/communities.js');
+// app.use('/', communityController);
+
+// INDEX ROUTE
+app.get('/', (req, res) => {
+    res.send('This is the index page');
+});
 
 //___________________
 //Listener
