@@ -22,5 +22,18 @@ router.get('/new', (req, res) => {
     res.render('new.ejs');
 });
 
+// GET SHOW COMMUNITIES
+router.get('/community', (req, res) => {
+    Community.find({}, (error, allCommunities) => {
+        if (error) {
+            res.send(error);
+        } else {
+            res.render('show_community.ejs', {
+                communities: allCommunities
+            });
+        }
+    })
+});
+
 
 module.exports = router;
