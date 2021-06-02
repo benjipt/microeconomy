@@ -44,17 +44,8 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 // Controllers
-// const communityController = require('./controllers/communities.js');
-// app.use('/', communityController);
-
-// INDEX ROUTE
-app.get('/', (req, res) => {
-    res.render('index.ejs');
-});
-
-app.get('/new', (req, res) => {
-    res.render('new.ejs');
-});
+const communityController = require('./controllers/communities.js');
+app.use('/', communityController);
 
 //___________________
 //Listener
