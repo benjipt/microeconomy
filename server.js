@@ -52,6 +52,10 @@ app.get('/', (req, res) => {
     res.render('index.ejs');
 });
 
+app.get('/new', (req, res) => {
+    res.render('new.ejs');
+});
+
 //___________________
 //Listener
 //___________________
