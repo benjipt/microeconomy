@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 // CREATE COMMUNITY ROUTE
 router.post('/', (req, res) => {
     Community.create(req.body, (error, createdCommunity) => {
-        res.redirect('/');
+        res.redirect('/community');
     });
 });
 
