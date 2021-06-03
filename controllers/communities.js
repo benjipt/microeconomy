@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Community = require('../models/communities.js');
+const Member = require('../models/members.js');
 
 // ROUTES
 // INDEX ROUTE
@@ -42,6 +43,13 @@ router.get('/community/:id', (req, res) => {
             community: foundCommunity
         });
     });
+});
+
+router.post('/community/:id', (req, res) => {
+    // console.log(req.body);
+    Member.create(req.body, (error, createdMember) => {
+        res.redirect('/community/' + req.params.id);
+    })
 });
 
 router.delete('/community/:id', (req, res) => {
