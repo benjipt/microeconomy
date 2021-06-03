@@ -25,9 +25,9 @@ router.get('/new', (req, res) => {
 
 // GET SHOW COMMUNITIES
 router.get('/community', (req, res) => {
-    Community.find({}, (error, allCommunities) => {
+    Community.find({}, (err, allCommunities) => {
         if (error) {
-            res.send(error);
+            res.send(err);
         } else {
             res.render('show_community.ejs', {
                 communities: allCommunities
@@ -38,7 +38,7 @@ router.get('/community', (req, res) => {
 
 // GET MEMBERS
 router.get('/community/:id', (req, res) => {
-    Community.findById(req.params.id, (error, foundCommunity) => {
+    Community.findById(req.params.id, (err, foundCommunity) => {
         res.render('show_members.ejs', {
             community: foundCommunity
         });
@@ -46,10 +46,13 @@ router.get('/community/:id', (req, res) => {
 });
 
 router.post('/community/:id', (req, res) => {
-    // console.log(req.body);
-    Member.create(req.body, (error, createdMember) => {
-        res.redirect('/community/' + req.params.id);
-    })
+    Member.create(req.body, (err, createdMember) => {
+        Community.findByIdAndUpdate(req.params.id, {
+            $push: { members: createdMember.id }
+        }, { new: true }, (err, foundCommunity) => {
+            res.redirect('/community/' + req.params.id);
+        });
+    });
 });
 
 router.delete('/community/:id', (req, res) => {
