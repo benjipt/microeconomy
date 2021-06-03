@@ -44,6 +44,12 @@ router.get('/community/:id', (req, res) => {
     });
 });
 
+router.delete('/community/:id', (req, res) => {
+    Community.findByIdAndRemove(req.params.id, (error, deletedCommunity) => {
+        res.redirect('/community');
+    });
+});
+
 router.put('/community/:id', (req, res) => {
     Community.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedModel) => {
         res.redirect('/community');

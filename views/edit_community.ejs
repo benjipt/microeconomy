@@ -19,6 +19,9 @@
                 </div>
                 <input type="submit" class="btn btn-primary" value="Submit">
             </form>
+            <form action="/community/<%= community.id %>/?_method=DELETE" method="POST">
+                <input type="submit" class="btn btn-outline-danger" value="DELETE">
+            </form>
         </div>
     </div>
 </body>
