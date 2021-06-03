@@ -35,5 +35,14 @@ router.get('/community', (req, res) => {
     })
 });
 
+// UPDATE COMMUNITY
+router.get('/community/:id', (req, res) => {
+    Community.findById(req.params.id, (error, foundCommunity) => {
+        res.render('edit_community.ejs', {
+            community: foundCommunity
+        });
+    });
+});
+
 
 module.exports = router;
