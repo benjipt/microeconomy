@@ -35,8 +35,22 @@ router.get('/community', (req, res) => {
     })
 });
 
-// UPDATE COMMUNITY
+// GET MEMBERS
 router.get('/community/:id', (req, res) => {
+    Community.findById(req.params.id, (error, foundCommunity) => {
+        res.render('show_members.ejs', {
+            community: foundCommunity
+        });
+    });
+});
+
+router.put('/community/:id', (req, res) => {
+    Community.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedModel) => {
+        res.redirect('/community');
+    });
+});
+
+router.get('/community/:id/edit', (req, res) => {
     Community.findById(req.params.id, (error, foundCommunity) => {
         res.render('edit_community.ejs', {
             community: foundCommunity
