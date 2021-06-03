@@ -64,5 +64,12 @@ router.get('/community/:id/edit', (req, res) => {
     });
 });
 
+router.get('/community/:id/new', (req, res) => {
+    Community.findById(req.params.id, (error, foundCommunity) => {
+        res.render('new_member.ejs', {
+            community: foundCommunity
+        });
+    });
+});
 
 module.exports = router;
