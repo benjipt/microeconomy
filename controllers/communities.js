@@ -26,7 +26,7 @@ router.get('/new', (req, res) => {
 // GET SHOW COMMUNITIES
 router.get('/community', (req, res) => {
     Community.find({}, (err, allCommunities) => {
-        if (error) {
+        if (err) {
             res.send(err);
         } else {
             res.render('show_community.ejs', {
