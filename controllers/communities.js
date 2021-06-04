@@ -37,10 +37,18 @@ router.get('/community', (req, res) => {
 });
 
 // GET MEMBERS
+// 1: https://dba.stackexchange.com/questions/197618/how-do-we-reference-to-a-collection-in-mongodb
+// 2: https://www.bmc.com/blogs/mongodb-operators/
 router.get('/community/:id', (req, res) => {
     Community.findById(req.params.id, (err, foundCommunity) => {
-        res.render('show_members.ejs', {
-            community: foundCommunity
+        Member.find({
+            "communities" : { $in : foundCommunity.members }
+        }, (err, matchingMembers) => {
+            console.log(matchingMembers);
+            res.render('show_members.ejs', {
+                community: foundCommunity,
+                members: matchingMembers
+            });
         });
     });
 });
