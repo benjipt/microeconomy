@@ -67,21 +67,21 @@ router.post('/community/:id', (req, res) => {
 
 // DELETE COMMUNITY
 router.delete('/community/:id', (req, res) => {
-    Community.findByIdAndRemove(req.params.id, (error, deletedCommunity) => {
+    Community.findByIdAndRemove(req.params.id, (err, deletedCommunity) => {
         res.redirect('/community');
     });
 });
 
 // UPDATE COMMUNITY
 router.put('/community/:id', (req, res) => {
-    Community.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedModel) => {
+    Community.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedModel) => {
         res.redirect('/community');
     });
 });
 
 // GET EDIT COMMUNITY
 router.get('/community/:id/edit', (req, res) => {
-    Community.findById(req.params.id, (error, foundCommunity) => {
+    Community.findById(req.params.id, (err, foundCommunity) => {
         res.render('edit_community.ejs', {
             community: foundCommunity
         });
@@ -90,10 +90,26 @@ router.get('/community/:id/edit', (req, res) => {
 
 // GET NEW MEMBER
 router.get('/community/:id/new', (req, res) => {
-    Community.findById(req.params.id, (error, foundCommunity) => {
+    Community.findById(req.params.id, (err, foundCommunity) => {
         res.render('new_member.ejs', {
             community: foundCommunity
         });
+    });
+});
+
+// GET MEMBER EDIT PAGE
+router.get('/member/:id', (req, res) => {
+    Member.findById(req.params.id, (err, foundMember) => {
+        res.render('edit_member.ejs', {
+            member: foundMember
+        });
+    });
+});
+
+// UPDATE MEMBER
+router.put('/member/:id', (req, res) => {
+    Member.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedModel) => {
+        res.redirect('/community');
     });
 });
 
