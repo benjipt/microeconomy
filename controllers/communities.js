@@ -41,8 +41,9 @@ router.get('/community', (req, res) => {
 // 2: https://www.bmc.com/blogs/mongodb-operators/
 router.get('/community/:id', (req, res) => {
     Community.findById(req.params.id, (err, foundCommunity) => {
+        console.log(foundCommunity.members);
         Member.find({
-            "communities" : { $in : foundCommunity.members }
+            "_id" : { $in : foundCommunity.members }
         }, (err, matchingMembers) => {
             console.log(matchingMembers);
             res.render('show_members.ejs', {
