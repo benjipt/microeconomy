@@ -53,6 +53,7 @@ router.get('/community/:id', (req, res) => {
     });
 });
 
+// CREATE MEMBERS
 router.post('/community/:id', (req, res) => {
     Member.create(req.body, (err, createdMember) => {
         Community.findByIdAndUpdate(req.params.id, {
@@ -63,18 +64,21 @@ router.post('/community/:id', (req, res) => {
     });
 });
 
+// DELETE COMMUNITY
 router.delete('/community/:id', (req, res) => {
     Community.findByIdAndRemove(req.params.id, (error, deletedCommunity) => {
         res.redirect('/community');
     });
 });
 
+// UPDATE COMMUNITY
 router.put('/community/:id', (req, res) => {
     Community.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedModel) => {
         res.redirect('/community');
     });
 });
 
+// GET EDIT COMMUNITY
 router.get('/community/:id/edit', (req, res) => {
     Community.findById(req.params.id, (error, foundCommunity) => {
         res.render('edit_community.ejs', {
@@ -83,6 +87,7 @@ router.get('/community/:id/edit', (req, res) => {
     });
 });
 
+// GET NEW MEMBER
 router.get('/community/:id/new', (req, res) => {
     Community.findById(req.params.id, (error, foundCommunity) => {
         res.render('new_member.ejs', {
