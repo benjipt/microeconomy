@@ -7,19 +7,22 @@
     <div class="container text-center mt-5">
         <h1><%= community.name %></h1>
         <div class="accordion mt-4">
+            <% for (let i=0; i<members.length; i++) {%> 
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Suzy DogWalker | Expert, experienced, punctual dogwalker
+                        <%= members[i].name %>  | <%= members[i].about %> 
                     </button>
                 </h2>
                 <div class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <p>Website: <a href="www.google.com">www.google.com</a></p>
-                        <p>Email: suzy@gmail.com</p>
+                        <p>Website: <a href="<%= members[i].website %>"><%= members[i].website %></a></p>
+                        <p>Email: <%= members[i].email %></p>
+                        <a href="/member/<%= members[i].id %>" class="btn btn-warning">Edit</a>
                     </div>
                 </div>
             </div>
+            <% } %> 
         </div>
         <div class="container mt-5">
             <a href="/community/<%= community.id %>/new" class="btn btn-primary">Add New Member</a>
