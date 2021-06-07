@@ -12,7 +12,7 @@ Privacy focused referral networks. Full-stack CRUD app using Express JS, deploye
 ## Technologies
 - HTML
 - CSS / Bootstrap
-- Javascript
+- Javascript / EJS
 - NodeJS / ExpressJS
 - MongoDB / Mongoose
 
